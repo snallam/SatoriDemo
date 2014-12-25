@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-<div id="chart" style="margin-top: 10%;">
+<div id="chart" style="margin-top: 10%">
 
 
 
@@ -280,19 +280,19 @@
     var chart = c3.generate({
         bindto: '#chart',
         data: {
-            x: 'Quantity',
+            x: 'x',
             columns: [
-                ['Quantity', 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
-                ['% discount', 10,10,11,11,11,12,12,13,14,15,17,18,19,20,21,23,24,25,26,28,29,30,31,31,32,33,34,34,35,35],
+                ['x',  1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+                ['data1', 10,10,11,11,11,12,12,13,14,15,17,18,19,20,21,23,24,25,26,28,29,30,31,31,32,33,34,34,35,35],
 
             ],
             onmouseover: function (selectedData) {
                // console.log("onmouseover", d);
 
                 console.log(selectedData);
-                var data='<table border=1 class="c3-tooltip">';
+                var data='<table border=1>';
 
-                selectedData=excelData.list[selectedData.x-1];
+                selectedData=excelData.list[selectedData.x];
                 console.log(selectedData);
 
                 if(selectedData){
