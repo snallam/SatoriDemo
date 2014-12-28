@@ -24,6 +24,24 @@ label{
 
 #chart{
     margin:15% 5% 5% 5%;
+
+}
+.wrapper-c{
+    float:left; /* important */
+    position:relative;
+}
+#data-tip{
+    position:absolute; /* absolute position (so we can position it where we want)*/
+    bottombottom:0px; /* position will be on bottom */
+
+    width:100%;
+    /* styling bellow */
+    background-color:black;
+    font-family: 'tahoma';
+    font-size:15px;
+    color:white;
+    opacity:0.6; /* transparency */
+    filter:alpha(opacity=60); /* IE transparency */
 }
 .align_label{
     -ms-transform: rotate(270deg); /* IE 9 */
