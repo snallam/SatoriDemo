@@ -473,8 +473,9 @@
 
         chart.unselect();
         $(".c3-selected-circle").remove()
+        chart.regions.remove({classes:['region'+regionFlag], duration: 0});
 
-        addregion(element,30)
+
 
         if(element==prev){
             flag=false;
@@ -499,7 +500,7 @@
 
 
 
-            chart.regions.remove({classes:['region'+regionFlag], duration: 0});
+
         regionFlag++;
 
 
