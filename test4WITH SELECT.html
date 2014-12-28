@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="c3.css">
     <link rel="stylesheet" href="style.css">
     <style>
@@ -23,9 +23,9 @@
         }
 
     </style>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/d3.js" charset="utf-8"></script>
     <script src="c3.js"></script>
 
 </head>
@@ -37,7 +37,7 @@
     <div class="row header">
 
         <div class="col-md-4 nav-logo" > <img src="http://satorisense.com/sanjudemo/Hammock_files/logo01.png"></div>
-        <div> <img src="header_title.png" style="padding-top: 1.5%"></div>
+        <div> <img src="images/header_title.png" style="padding-top: 1.5%"></div>
 
     </div>
 
@@ -462,22 +462,33 @@
 <script>
      flag=false;
     var prev=null;
+     var regionFlag=0;
     function getFlag(){
         return flag;
     }
 
     function setFlag(element){
 
-        removeregion();
+
+
+        chart.unselect();
+        $(".c3-selected-circle").remove()
+
+        addregion(element,30)
+
         if(element==prev){
             flag=false;
 
 
         }
         else{
+
+            chart.select(['Quantity'],[element-1])
             prev=element;
             flag=true;
-           // addregion(element,30)
+
+
+            addregion(element,30)
 
 
         }
@@ -485,16 +496,26 @@
     }
 
     function addregion(x,y){
-        chart.regions.add([
-            {axis: 'x',start:0,end:x,class:"region1"},
-            /*{axis: 'y',start:0,end:y,class:"region1"},*/
 
-        ]);
+
+
+            chart.regions.remove({classes:['region'+regionFlag], duration: 0});
+        regionFlag++;
+
+
+            regionFlag=true;
+            chart.regions.add([
+                {axis: 'x',start:0,end:x,class:"region"+regionFlag},
+                //{axis: 'y',start:temp[x],end:50,class:"region2"}
+
+            ]);
+
+
     }
      function removeregion(){
 
          /*chart.regions.remove({classes:['region1']});*/
-         chart.regions.remove({});
+         chart.regions.remove({classes:['region1','region2']});
 
      }
 
